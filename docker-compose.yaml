@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  demo-app:
+    image: ghcr.io/muangmsu/cicd-demo:latest
+    container_name: cicd
+    expose:
+      - "3000"
+    networks:
+      - nginx-proxy-manager_default
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    restart: always
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower-cicd
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup --label-enable
+    restart: always
+
+networks:
+  nginx-proxy-manager_default:
+    external: true
+
+
