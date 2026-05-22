@@ -38,8 +38,8 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
-      - name: 5. Trigger Webhook
-        if: success()
-        run: |
-          # ยิงตรงไปที่ URL ของอาจารย์ตามที่ตกลงกันไว้
-          curl -X POST http://cicd.csmsu.net
+      # - name: 5. Trigger Webhook
+      #   if: success()
+      #   run: |
+      #     # ยิงตรงไปที่ URL ของอาจารย์ตามที่ตกลงกันไว้
+      #     curl -X POST http://cicd.csmsu.net
